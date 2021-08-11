@@ -6,7 +6,6 @@ public class Search {
     // Is the array sorted ?
     // What is the range of possible values?
 
-
     /* 1. Declare a variable */
     int position = -1;
 
@@ -16,9 +15,6 @@ public class Search {
         break;
       }
     }
-
-
-
     /* 2. Return the variable */
     return position;
   }
@@ -29,15 +25,20 @@ public class Search {
 
   private static int binarySearch(int[] haystack, int needle, int start, int end) {
     int position = ~start;
-    if (end > start) {
+    while (end > start) {
       int mid = (start + end) / 2;
       int value = haystack[mid];
+
       if (value == needle) {
         position = mid;
+        break;
       } else if (value < needle) {
-        position = binarySearch(haystack, needle, mid + 1, end);
+
+
+        start = mid + 1;
+        position = ~start;
       } else {
-        position = binarySearch(haystack, needle, start, mid);
+        end = mid;
       }
 
     }
